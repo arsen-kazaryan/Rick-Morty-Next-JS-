@@ -15,7 +15,9 @@ type Props = {
 const PostPage = async ({ params }: Props) => {
   const { id } = await params;
   const post: Character  = await getCharacter(id);
-
+  const prevCharacter: string = (+id - 1).toString();
+  const nextCharacter: string = (+id + 1).toString();
+  
   return (
     <section className="mx-auto mt-10 max-w-5xl px-5">
       <div className="flex flex-col gap-8 rounded-xl border p-6 md:flex-row">
@@ -28,8 +30,7 @@ const PostPage = async ({ params }: Props) => {
         />
 
         <div className="flex-1">
-          <h1 className="mb-6 text-4xl font-bold">{post.name}</h1>
-
+          <h1 className="mb-6 text-4xl font-bold">{post.name} </h1>
           <div className="space-y-4">
             <div className="flex justify-between border-b pb-2">
               <span className="font-medium text-gray-500">Status</span>
@@ -65,10 +66,13 @@ const PostPage = async ({ params }: Props) => {
               <span className="font-medium text-gray-500">Created</span>
               <span>{new Date(post.created).toLocaleDateString()}</span>
             </div>
-            <Link href='/'>Back</Link>
           </div>
         </div>
       </div>
+          <div className="flex justify-between">
+            <Link href={`/character/${prevCharacter}`}>Prev</Link>
+            <Link href={`/character/${nextCharacter}`}>Next</Link>
+          </div>
     </section>
   );
 };

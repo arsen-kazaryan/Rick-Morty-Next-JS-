@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
 // Список для разрешенных картинок(Защита от ddos атак)
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
