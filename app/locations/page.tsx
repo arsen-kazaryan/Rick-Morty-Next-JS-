@@ -1,26 +1,12 @@
+import { getLocations } from "@/lib/api";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: 'Locations'
 };
 
-interface LocationItem {
-  id: number;
-  name: string;
-  type: string;      
-  dimension: string;
-}
 
-async function getLocations(): Promise<LocationItem[]> {
-  const res = await fetch('https://rickandmortyapi.com/api/location', {
-    next: {
-      revalidate: 120, 
-    },
-  });
-  if (!res.ok) throw new Error('Failed to fetch data');
-  const data = await res.json();
-  return data.results;
-}
+
 
 const LocationsPage = async () => {
   const locations = await getLocations();

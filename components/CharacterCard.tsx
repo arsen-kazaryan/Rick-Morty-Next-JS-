@@ -1,19 +1,11 @@
 import Image from 'next/image';
 import './Style/Post.css'
 import Link from 'next/link';
+import { Character } from '@/types';
 
-interface Character {
-  id: number;
-  name: string;
-  image: string;
-  status: string;
-  location:{
-    name:string;
-  }
-}
 type PostsProps = {
-  posts: Character[]
-}
+  posts: Character[];
+};
 
 const Post =  ({posts}: PostsProps) => {
   return (

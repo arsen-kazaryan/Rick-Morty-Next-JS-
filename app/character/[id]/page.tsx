@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Character } from "@/types/index";
+import { getCharacter } from "@/lib/api";
 
 type Props = {
   params: Promise<{
@@ -8,47 +10,11 @@ type Props = {
 };
 
 
-type Character = {
-  id: number;
-  name: string;
-  status: string;
-  species: string;
-  type: string;
-  gender: string;
-  origin: {
-    name: string;
-    url: string;
-  };
-  location: {
-    name: string;
-    url: string;
-  };
-  image: string;
-  episode: string[];
-  url: string;
-  created: string;
-};
-
-
-async function getData(id: string) {
-  const res = await fetch(
-    `https://rickandmortyapi.com/api/character/${id}`,
-    {
-      next: {
-        revalidate: 120,
-      },
-    }
-  );
-
-  if (!res.ok) throw new Error("Failed to fetch data");
-
-  return res.json();
-}
 
 
 const PostPage = async ({ params }: Props) => {
   const { id } = await params;
-  const post: Character = await getData(id);
+  const post: Character  = await getCharacter(id);
 
   return (
     <section className="mx-auto mt-10 max-w-5xl px-5">
