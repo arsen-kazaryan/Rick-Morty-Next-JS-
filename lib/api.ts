@@ -1,6 +1,6 @@
-import { Character, LocationItem } from "@/types";
+import { ApiResponse, Character, LocationItem } from "@/types";
 
-const BASE_URL = "https://rickandmortyapi.com/api";
+export const BASE_URL = "https://rickandmortyapi.com/api";
 
 async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url, {
@@ -19,10 +19,17 @@ export async function getCharacters(): Promise<Character[]> {
   return data.results;
 }
 
+
 export async function getCharacter(id: string): Promise<Character> {
   return fetchJson<Character>(`${BASE_URL}/character/${id}`);
 }
 
+
+
+export async function getpage(id: string): Promise<Character[]> {
+  const data = await fetchJson<ApiResponse>(`${BASE_URL}/character/?page=${id}`);
+  return data.results;
+}
 export async function getLocations(): Promise<LocationItem[]> {
   const data = await fetchJson<{ results: LocationItem[] }>(
     `${BASE_URL}/location`

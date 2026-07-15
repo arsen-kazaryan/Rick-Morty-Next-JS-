@@ -10,9 +10,9 @@ type PostsProps = {
 const Post =  ({posts}: PostsProps) => {
   return (
     posts.map((char) => (
-      <div key={char.id} className="post">
-        <div className='post_iamge-wrapper'>
-          <Image src={char.image} alt={char.name} width={200} height={250}  />
+      <div key={char.id} className="flex border bg-gray-800 h-[200] ">
+        <div className='w-50 relative'>
+          <Image src={char.image} alt={char.name} fill/>
         </div>
         <div className="post_content-wrapper">
           <Link href={`/character/${char.id}`} className="post_name">{char.name}</Link>
