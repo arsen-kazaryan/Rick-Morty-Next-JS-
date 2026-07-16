@@ -4,7 +4,7 @@ import type { Character, PropsParam } from "@/types/index";
 import { getCharacter } from "@/lib/api";
 
 
-export async function  generateMetadata({ params }: PropsParam) {
+export async function generateMetadata({ params }: PropsParam) {
   const { id } = await params;
   const character = await getCharacter(id);
   return { title: character.name };
@@ -14,13 +14,17 @@ export async function  generateMetadata({ params }: PropsParam) {
 
 const CharacterPage = async ({ params }: PropsParam) => {
   const { id } = await params;
-  const post: Character  = await getCharacter(id);
+  const post: Character = await getCharacter(id);
   const currentId = Number(id)
-  const hasPrev = currentId > 1; 
+  const hasPrev = currentId > 1;
   const nextCharacter: string = (+id + 1).toString();
-  
+
   return (
-    <section className="mx-auto mt-10 max-w-5xl px-5">
+    <section className="mx-auto mt-10 max-w-5xl px-5 ">
+      <div className="flex justify-between">
+        {hasPrev && <Link href={`/character/${currentId - 1}`} className="p-2 bg-amber-50/50 rounded-2xl hover:bg-amber-50 hover:text-black transition-colors">Prev</Link>}
+        <Link href={`/character/${nextCharacter}`} className="p-2 bg-amber-50/50 rounded-2xl hover:bg-amber-50 hover:text-black transition-colors">Next</Link>
+      </div>
       <div className="flex flex-col gap-8 rounded-xl border p-6 md:flex-row">
         <Image
           src={post.image}
@@ -70,10 +74,7 @@ const CharacterPage = async ({ params }: PropsParam) => {
           </div>
         </div>
       </div>
-          <div className="flex justify-between">
-            {hasPrev && <Link href={`/character/${currentId - 1}`}>Prev</Link>}
-            <Link href={`/character/${nextCharacter}`}>Next</Link>
-          </div>
+
     </section>
   );
 };
