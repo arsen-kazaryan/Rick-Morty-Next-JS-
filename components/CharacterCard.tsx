@@ -3,14 +3,14 @@ import './Style/Post.css'
 import Link from 'next/link';
 import { Character } from '@/types';
 
-type PostsProps = {
+type PostsCharacter = {
   posts: Character[];
 };
 
-const Post =  ({posts}: PostsProps) => {
+const CharacterCard =  ({posts}: PostsCharacter) => {
   return (
     posts.map((char) => (
-      <div key={char.id} className="flex border bg-gray-800 h-[200] ">
+      <div key={char.id} className="flex border bg-gray-800 h-50 ">
         <div className='w-50 relative'>
           <Image src={char.image} alt={char.name} fill/>
         </div>
@@ -24,4 +24,4 @@ const Post =  ({posts}: PostsProps) => {
   )
 }
 
-export default Post
+export default CharacterCard
