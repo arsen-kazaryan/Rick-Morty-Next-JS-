@@ -34,3 +34,8 @@ export interface ApiResponse {
   };
   results: Character[]; // Массив персонажей, который нам и нужен
 }
+export type PropsParam = {
+  params: Promise<{
+    id: string;
+  }>;
+};

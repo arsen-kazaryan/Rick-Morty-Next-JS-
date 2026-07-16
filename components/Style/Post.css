@@ -1,11 +1,4 @@
-.post{
-  display: flex;
-  max-width:500px ;
-  border-radius:20px ;
-  overflow: hidden;
-  background: #3b3b3ba4;
-  box-shadow: 5px 10px 20px rgba(60, 60, 60, 0.753);
-}
+
 .post_content-wrapper{
   padding: 10px;
 }
