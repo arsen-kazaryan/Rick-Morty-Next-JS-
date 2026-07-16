@@ -1,21 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Character } from "@/types/index";
+import type { Character, PropsParam } from "@/types/index";
 import { getCharacter } from "@/lib/api";
 
-type Props = {
-  params: Promise<{
-    id: string;
-  }>;
-};
+
+export async function  generateMetadata({ params }: PropsParam) {
+  const { id } = await params;
+  const character = await getCharacter(id);
+  return { title: character.name };
+}
 
 
 
-
-const PostPage = async ({ params }: Props) => {
+const CharacterPage = async ({ params }: PropsParam) => {
   const { id } = await params;
   const post: Character  = await getCharacter(id);
-  const prevCharacter: string = (+id - 1).toString();
+  const currentId = Number(id)
+  const hasPrev = currentId > 1; 
   const nextCharacter: string = (+id + 1).toString();
   
   return (
@@ -70,11 +71,11 @@ const PostPage = async ({ params }: Props) => {
         </div>
       </div>
           <div className="flex justify-between">
-            <Link href={`/character/${prevCharacter}`}>Prev</Link>
+            {hasPrev && <Link href={`/character/${currentId - 1}`}>Prev</Link>}
             <Link href={`/character/${nextCharacter}`}>Next</Link>
           </div>
     </section>
   );
 };
 
-export default PostPage;
+export default CharacterPage;
