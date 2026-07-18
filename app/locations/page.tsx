@@ -5,34 +5,36 @@ export const metadata: Metadata = {
   title: 'Locations'
 };
 
-
-
-
 const LocationsPage = async () => {
   const locations = await getLocations();
 
   return (
-    <div className="flex flex-col items-center bg-zinc-50 p-6 dark:bg-zinc-950 min-h-screen">
-      <h1 className="text-3xl font-extrabold my-6 text-zinc-800 dark:text-white">
-        Locations
-      </h1>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl">
-        {locations.map((loc) => (
-          <div key={loc.id} className="border border-zinc-200 p-5 rounded-xl bg-white dark:bg-zinc-900 shadow-sm flex flex-col justify-between">
-            <div>
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-white mb-2">
-                {loc.name}
-              </h2>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                <span className="font-semibold">Type:</span> {loc.type}
+    <div className="bg-scanlines min-h-screen px-4 py-10">
+      <div className="mx-auto max-w-5xl">
+        <p className="mb-1 font-mono text-xs uppercase tracking-[0.25em] text-(--muted)">
+          Charted Dimensions
+        </p>
+        <h1 className="mb-8 text-3xl font-bold text-(--text)">Locations</h1>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {locations.map((loc) => (
+            <div
+              key={loc.id}
+              className="rounded-lg border border-(--panel-line) bg-(--panel) p-5"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-widest text-(--portal)">
+                #{String(loc.id).padStart(3, '0')}
+              </p>
+              <h2 className="mt-1 text-lg font-semibold text-(--text)">{loc.name}</h2>
+              <p className="mt-2 text-xs text-(--muted)">
+                Type · {loc.type}
+              </p>
+              <p className="mt-3 border-t border-dashed border-(--panel-line) pt-3 font-mono text-[11px] italic text-(--muted)">
+                {loc.dimension}
               </p>
             </div>
-            <p className="text-xs text-zinc-400 mt-4 italic">
-              {loc.dimension}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,8 +1,10 @@
 const Loading = () => {
   return (
-    <>
-      <h1 className="text-[40px] flex justify-center items-center">Loading...</h1>
-    </>
+    <div className="flex min-h-screen items-center justify-center bg-(--bg)">
+      <p className="animate-pulse font-mono text-xs uppercase tracking-[0.3em] text-(--portal)">
+        Scanning Dimensions…
+      </p>
+    </div>
   )
 }
 
