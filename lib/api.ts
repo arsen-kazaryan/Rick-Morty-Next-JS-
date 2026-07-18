@@ -20,9 +20,10 @@ export async function getCharacter(id: string): Promise<Character> {
 }
 
 
-
-export async function getpage(page: string): Promise<ApiResponse> {
-  return fetchJson<ApiResponse>(`${BASE_URL}/character/?page=${page}`);
+export async function getpage(page: string, name?: string): Promise<ApiResponse> {
+  const params = new URLSearchParams({ page })
+  if (name) params.set('name', name)
+  return fetchJson<ApiResponse>(`${BASE_URL}/character/?${params.toString()}`)
 }
 
 export async function getLocations(): Promise<LocationItem[]> {

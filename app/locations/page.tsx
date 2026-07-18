@@ -29,7 +29,7 @@ const LocationsPage = async () => {
               <p className="mt-2 text-xs text-(--muted)">
                 Type · {loc.type}
               </p>
-              <p className="mt-3 border-t border-dashed border-(--panel-line) pt-3 font-mono text-[11px] italic text-(--muted)">
+              <p className="mt-3 border-t border-dashed border-(--panel-line) pt-3 font-mono text-[11px] italic text-(--muted)]">
                 {loc.dimension}
               </p>
             </div>
