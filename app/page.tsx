@@ -19,7 +19,7 @@ export default async function Home({ searchParams }: Props) {
     <div className="bg-scanlines min-h-screen px-4 py-10">
       <div className="mx-auto max-w-3xl">
         <p className="mb-6 font-mono text-xs uppercase tracking-[0.25em] text-(--muted)]">
-          Signal Log — Dimension C-137
+          Signal Log - Dimension C-137
         </p>
 
         <SearchBar defaultValue={name} />

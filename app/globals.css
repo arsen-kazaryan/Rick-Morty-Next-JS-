@@ -37,7 +37,6 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-/* Faint CRT scanline texture for page backgrounds */
 .bg-scanlines {
   background-image: repeating-linear-gradient(
     to bottom,
@@ -48,7 +47,6 @@ button:focus-visible {
   );
 }
 
-/* Diagonal hazard tape, used as a thin structural accent */
 .hazard-stripe {
   background-image: repeating-linear-gradient(
     -45deg,
@@ -59,10 +57,7 @@ button:focus-visible {
   );
 }
 
-/* Signature element: rotating portal ring around character thumbnails */
-.portal-ring {
-  padding: 2px;
-  border-radius: 9999px;
+.portal-ring-bg {
   background: conic-gradient(
     from 0deg,
     var(--portal),
@@ -79,8 +74,3 @@ button:focus-visible {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .portal-ring {
-    animation: none;
-  }
-}
