@@ -21,7 +21,7 @@ const CharacterCard = ({ posts }: PostsCharacter) => {
           href={`/character/${char.id}`}
           className="group flex items-center gap-4 rounded-lg border border-(--panel-line) bg-(--panel) p-3 transition-colors hover:border-(--portal-dim)]"
         >
-          <div className="portal-ring h-16 w-16 shrink-0">
+          <div className="portal-ring h-16 w-16 shrink-0 ">
             <div className="relative h-full w-full overflow-hidden rounded-full bg-(--bg)">
               <Image src={char.image} alt={char.name} fill sizes="64px" className="object-cover" />
             </div>
